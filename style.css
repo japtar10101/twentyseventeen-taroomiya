@@ -1,0 +1,122 @@
+/*
+Theme Name: Twenty Seventeen - Taro Omiya
+Theme URI: https://wordpress.org/themes/twentyseventeen/
+Author: Taro Omiya
+Author URI: http://taroomiya.com/
+Description: Child to Twenty Seventeen Theme from Wordpress
+Template:     twentyseventeen
+Version: 1.4.8
+License: Taro Omiya
+License URI:
+Text Domain: twentyseventeen-taroomiya
+Tags: one-column, two-columns, right-sidebar, flexible-header, accessibility-ready, custom-colors, custom-header, custom-menu, custom-logo, editor-style, featured-images, footer-widgets, post-formats, rtl-language-support, sticky-post, theme-options, threaded-comments, translation-ready
+*/
+
+span.resumedate {
+	float: right;
+}
+
+article.post header.entry-header.latest-post {
+	margin-bottom: 20px;
+}
+
+article.post header.entry-header.latest-post div.entry-meta {
+	margin-top: 8px;
+}
+
+div.entry-content ul li {
+	margin-left: 1.4em;
+	padding-left: 0.4em;
+}
+
+div.entry-content ol li {
+	margin-left: 1.4em;
+	padding-left: 0.4em;
+}
+
+div.entry-content ol li blockquote {
+	font-size: 1em;
+	padding-left: 0.4em;
+}
+
+nav.social-navigation {
+	float: none;
+	width: 100%;
+	text-align: center;
+	padding-left: 16px;
+}
+
+.social-navigation + .site-info {
+	float: none;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.panel-content div.wrap {
+	padding-top: 3.5em;
+	padding-bottom: 2.5em;
+}
+
+.panel-content div.wrap header.entry-header {
+	margin-bottom: 2.75em;
+}
+
+.panel-content div.wrap header.entry-header h2.entry-title {
+	font-size: 1.5rem;
+}
+
+div.site-content-contain footer.site-footer {
+	margin-top: 0px;
+}
+
+/* Force sticky navigation into position */
+#page-header {
+  margin-bottom: 0 !important;
+}
+
+/* Force header image to full height */
+#custom-header-media {
+  height: 100vh;
+  max-height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+div.site-content-contain div#content.site-content {
+	padding-top: 2em;
+}
+
+div#jp-relatedposts {
+	border-top: 1px solid #eee;
+	border-bottom: 1px solid #eee;
+	padding-top: 2em;
+	padding-bottom: 0.5em;
+}
+
+div#comments {
+	padding-top: 1em;
+	padding-bottom: 0px;
+}
+
+nav.navigation.post-navigation {
+	margin-top: 0px;
+	margin-bottom: 1em;
+}
+
+.entry-content a:focus, .entry-content a:hover, .entry-summary a:focus, .entry-summary a:hover, .widget a:focus, .widget a:hover, .site-footer .widget-area a:focus, .site-footer .widget-area a:hover, .posts-navigation a:focus, .posts-navigation a:hover, .comment-metadata a:focus, .comment-metadata a:hover, .comment-metadata a.comment-edit-link:focus, .comment-metadata a.comment-edit-link:hover, .comment-reply-link:focus, .comment-reply-link:hover, .widget_authors a:focus strong, .widget_authors a:hover strong, .entry-title a:focus, .entry-title a:hover, .entry-meta a:focus, .entry-meta a:hover, .page-links a:focus .page-number, .page-links a:hover .page-number, .entry-footer a:focus, .entry-footer a:hover, .entry-footer .cat-links a:focus, .entry-footer .cat-links a:hover, .entry-footer .tags-links a:focus, .entry-footer .tags-links a:hover, .post-navigation a:focus, .post-navigation a:hover, .pagination a:not(.prev):not(.next):focus, .pagination a:not(.prev):not(.next):hover, .comments-pagination a:not(.prev):not(.next):focus, .comments-pagination a:not(.prev):not(.next):hover, .logged-in-as a:focus, .logged-in-as a:hover, a:focus .nav-title, a:hover .nav-title, .edit-link a:focus, .edit-link a:hover, .site-info a:focus, .site-info a:hover, .widget .widget-title a:focus, .widget .widget-title a:hover, .widget ul li a:focus, .widget ul li a:hover {
+  box-shadow: initial;
+  -webkit-box-shadow: initial;
+}
+
+div.entry-content h1, div.entry-content h2, div.entry-content h3 {
+	padding-top: 0.3em;
+}
+
+@media screen and (min-width: 48em) {
+	.page.page-one-column .entry-header,
+	.twentyseventeen-front-page.page-one-column .entry-header,
+	.archive.page-one-column:not(.has-sidebar) .page-header {
+		margin-bottom: -0.5em;
+	}
+}
