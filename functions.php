@@ -21,6 +21,22 @@ function my_theme_enqueue_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
 
+// Add theme support for more SVG icons.
+function childtheme_include_svg_icons() {
+	$arr = array('bitbucket.svg', 'patreon.svg');
+	foreach ($arr as &$value) {
+		// Define SVG sprite file.
+		$custom_svg_icons = get_theme_file_path( '/assets/images/' . $value );
+
+		// If it exists, include it.
+		if ( file_exists( $custom_svg_icons ) ) {
+			require_once( $custom_svg_icons );
+		}
+	}
+	unset($value);
+}
+add_action( 'wp_footer', 'childtheme_include_svg_icons', 99999 );
+
 // Add theme support for Portfolio Custom Post Type.
 function my_theme_jetpack_portfolio() {
     add_theme_support( 'jetpack-portfolio' );
