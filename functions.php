@@ -37,6 +37,14 @@ function childtheme_include_svg_icons() {
 }
 add_action( 'wp_footer', 'childtheme_include_svg_icons', 99999 );
 
+// Add theme support for social icons.
+function childtheme_social_links_icons( $social_links_icons ) {
+	$social_links_icons['patreon.com'] = 'patreon';
+	$social_links_icons['bitbucket.org'] = 'bitbucket';
+	return $social_links_icons;
+}
+add_filter( 'twentyseventeen_social_links_icons', 'childtheme_social_links_icons' );
+
 // Add theme support for Portfolio Custom Post Type.
 function my_theme_jetpack_portfolio() {
     add_theme_support( 'jetpack-portfolio' );
