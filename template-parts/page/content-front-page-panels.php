@@ -35,7 +35,30 @@ global $twentyseventeencounter;
 				<?php twentyseventeen_edit_link( get_the_ID() ); ?>
 
 			</header><!-- .entry-header -->
+			
+			<?php
+			// Show recent projects if is a portfolio page
+			if ( $post->post_name === 'portfolio'  ) : ?>
+				<?php // Show four most recent posts.
+				$recent_projects = new WP_Query( array(
+					// TODO: use const 'jetpack_portfolio_posts_per_page' to retrieve number of posts from the theme's own settings
+					'posts_per_page'      => 6,
+					'post_type'           => 'jetpack-portfolio',
+					'post_status'         => 'publish',
+					'order'               => 'desc',
+					'orderby'             => 'date',
+				) );
+				?>
 
+				<?php if ( $recent_projects->have_posts() ) : ?>
+					<?php
+					while ( $recent_projects->have_posts() ) : $recent_projects->the_post();
+						get_template_part( 'template-parts/post/content', 'portfolio' );
+					endwhile;
+					?>
+				<?php endif; ?>
+			<?php endif; ?>
+			
 			<div class="entry-content">
 				<?php
 					/* translators: %s: Name of current post */
@@ -71,6 +94,7 @@ global $twentyseventeencounter;
 						?>
 					</div><!-- .recent-posts -->
 				<?php endif; ?>
+			
 			<?php endif; ?>
 
 		</div><!-- .wrap -->
