@@ -56,4 +56,6 @@ function my_custom_tiled_gallery_width() {
     return '904';
 }
 add_filter( 'tiled_gallery_content_width', 'my_custom_tiled_gallery_width' );
+
+add_image_size( 'portfolio-thumbnail', 215, 120, true);
 ?>

@@ -5,7 +5,7 @@ Author: Taro Omiya
 Author URI: http://taroomiya.com/
 Description: Child to Twenty Seventeen Theme from Wordpress
 Template:     twentyseventeen
-Version: 1.4.9
+Version: 1.4.11
 License: Taro Omiya
 License URI:
 Text Domain: twentyseventeen-taroomiya
@@ -14,6 +14,12 @@ Tags: one-column, two-columns, right-sidebar, flexible-header, accessibility-rea
 
 span.resumedate {
 	float: right;
+}
+
+div.portfolio-content {
+	float: left;
+	width: 215px;	
+	height: 120px;	
 }
 
 article.post header.entry-header.latest-post {
