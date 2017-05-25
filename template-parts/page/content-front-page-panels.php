@@ -36,10 +36,41 @@ global $twentyseventeencounter;
 
 			</header><!-- .entry-header -->
 			
+			<div class="entry-content">
+				<?php
+					/* translators: %s: Name of current post */
+					the_content( sprintf(
+						__( 'See more<span class="screen-reader-text"> "%s"</span>', 'twentyseventeen' ),
+						get_the_title()
+					) );
+				?>
+			</div><!-- .entry-content -->
+
 			<?php
+			// Show recent blog posts if is blog posts page (Note that get_option returns a string, so we're casting the result as an int).
+			if ( get_the_ID() === (int) get_option( 'page_for_posts' )  ) :
+
+				// Show four most recent posts.
+				$recent_posts = new WP_Query( array(
+					'posts_per_page'      => 3,
+					'post_status'         => 'publish',
+					'ignore_sticky_posts' => true,
+					'no_found_rows'       => true,
+				) );
+				if ( $recent_posts->have_posts() ) : ?>
+				<div class="recent-posts">
+					<?php
+					while ( $recent_posts->have_posts() ) : $recent_posts->the_post();
+						get_template_part( 'template-parts/post/content', 'excerpt' );
+					endwhile;
+					wp_reset_postdata();
+					?>
+				</div><!-- .recent-posts -->
+			<?php endif;
 			// Show recent projects if is a portfolio page
-			if ( $post->post_name === 'portfolio'  ) : ?>
-				<?php // Show four most recent posts.
+			elseif ( $post->post_name === 'portfolio'  ) :
+
+				// Show 6 most recent projects.
 				$recent_projects = new WP_Query( array(
 					// TODO: use const 'jetpack_portfolio_posts_per_page' to retrieve number of posts from the theme's own settings
 					'posts_per_page'      => 6,
@@ -48,54 +79,18 @@ global $twentyseventeencounter;
 					'order'               => 'desc',
 					'orderby'             => 'date',
 				) );
-				?>
-
-				<?php if ( $recent_projects->have_posts() ) : ?>
+				if ( $recent_projects->have_posts() ) : ?>
+				<div class="portfolio">
 					<?php
-					while ( $recent_projects->have_posts() ) : $recent_projects->the_post();
+					while ( $recent_projects->have_posts() ) :
+						$recent_projects->the_post();
 						get_template_part( 'template-parts/post/content', 'portfolio' );
 					endwhile;
+					wp_reset_postdata();
 					?>
-				<?php endif; ?>
-			<?php endif; ?>
-			
-			<div class="entry-content">
-				<?php
-					/* translators: %s: Name of current post */
-					the_content( sprintf(
-						__( 'Continue reading<span class="screen-reader-text"> "%s"</span>', 'twentyseventeen' ),
-						get_the_title()
-					) );
-				?>
-			</div><!-- .entry-content -->
-
-			<?php
-			// Show recent blog posts if is blog posts page (Note that get_option returns a string, so we're casting the result as an int).
-			if ( get_the_ID() === (int) get_option( 'page_for_posts' )  ) : ?>
-
-				<?php // Show four most recent posts.
-				$recent_posts = new WP_Query( array(
-					'posts_per_page'      => 3,
-					'post_status'         => 'publish',
-					'ignore_sticky_posts' => true,
-					'no_found_rows'       => true,
-				) );
-				?>
-
-		 		<?php if ( $recent_posts->have_posts() ) : ?>
-
-					<div class="recent-posts">
-
-						<?php
-						while ( $recent_posts->have_posts() ) : $recent_posts->the_post();
-							get_template_part( 'template-parts/post/content', 'excerpt' );
-						endwhile;
-						wp_reset_postdata();
-						?>
-					</div><!-- .recent-posts -->
-				<?php endif; ?>
-			
-			<?php endif; ?>
+				</div>
+				<?php endif;
+			endif; ?>
 
 		</div><!-- .wrap -->
 	</div><!-- .panel-content -->
