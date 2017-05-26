@@ -1,5 +1,7 @@
 <?php
+//////////////////////////////////////////////
 // Append this themes stylesheet
+//////////////////////////////////////////////
 function my_theme_enqueue_styles() {
 
     $parent_style = 'twentyseventeen-style';
@@ -21,7 +23,9 @@ function my_theme_enqueue_styles() {
 }
 add_action( 'wp_enqueue_scripts', 'my_theme_enqueue_styles' );
 
+//////////////////////////////////////////////
 // Add theme support for more SVG icons.
+//////////////////////////////////////////////
 function childtheme_include_svg_icons() {
 	$arr = array('bitbucket.svg', 'patreon.svg');
 	foreach ($arr as &$value) {
@@ -37,7 +41,9 @@ function childtheme_include_svg_icons() {
 }
 add_action( 'wp_footer', 'childtheme_include_svg_icons', 99999 );
 
+//////////////////////////////////////////////
 // Add theme support for social icons.
+//////////////////////////////////////////////
 function childtheme_social_links_icons( $social_links_icons ) {
 	$social_links_icons['patreon.com'] = 'patreon';
 	$social_links_icons['bitbucket.org'] = 'bitbucket';
@@ -45,17 +51,32 @@ function childtheme_social_links_icons( $social_links_icons ) {
 }
 add_filter( 'twentyseventeen_social_links_icons', 'childtheme_social_links_icons' );
 
+//////////////////////////////////////////////
 // Add theme support for Portfolio Custom Post Type.
+//////////////////////////////////////////////
 function my_theme_jetpack_portfolio() {
     add_theme_support( 'jetpack-portfolio' );
 }
 add_action( 'after_setup_theme', my_theme_jetpack_portfolio );
 
+//////////////////////////////////////////////
 // Adjust tiled gallery width
+//////////////////////////////////////////////
 function my_custom_tiled_gallery_width() {
     return '904';
 }
 add_filter( 'tiled_gallery_content_width', 'my_custom_tiled_gallery_width' );
 
+//////////////////////////////////////////////
+// Add infinite scrolling
+//////////////////////////////////////////////
+add_theme_support( 'infinite-scroll', array(
+    'container' => 'content',
+    'footer' => 'page',
+) );
+
+//////////////////////////////////////////////
+// Add extra image size for portfolio
+//////////////////////////////////////////////
 add_image_size( 'portfolio-thumbnail', 213, 120, true);
 ?>
