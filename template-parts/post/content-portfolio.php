@@ -15,14 +15,16 @@
 ?>
 
 <div class="portfolio-content">
-	<div class="front"> 
-		<a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">
+	<a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">
+		<div class="front"> 
 			<?php the_post_thumbnail('portfolio-thumbnail'); ?>
-		</a>
-	</div>
-	<div class="back">
-		<a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">
-			<h4><?php echo get_the_title(); ?></h4>
-		</a>
-	</div>
+		</div>
+		<div class="back">
+			<?php the_post_thumbnail('portfolio-thumbnail'); ?>
+			<span>
+				<h4><?php echo get_the_title(); ?></h4>
+				<?php the_tags( '<p>', ', ', '</p>' ) ?>
+			</span>
+		</div>
+	</a>
 </div>

@@ -5,7 +5,7 @@ Author: Taro Omiya
 Author URI: http://taroomiya.com/
 Description: Child to Twenty Seventeen Theme from Wordpress
 Template:     twentyseventeen
-Version: 1.4.11
+Version: 1.4.16
 License: Taro Omiya
 License URI:
 Text Domain: twentyseventeen-taroomiya
@@ -18,8 +18,24 @@ span.resumedate {
 
 div.portfolio-content {
 	float: left;
-	width: 215px;	
+	width: 213px;	
 	height: 120px;	
+}
+
+div.portfolio-content .back img {
+	-webkit-filter: grayscale(80%) opacity(30%) blur(1.5px);
+  filter: grayscale(80%) opacity(30%) blur(1.5px);
+}
+
+div.portfolio-content .back span {
+  position: absolute;
+  margin: 0;
+  padding: 5px;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
 }
 
 article.post header.entry-header.latest-post {

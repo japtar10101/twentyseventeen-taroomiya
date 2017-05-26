@@ -70,7 +70,7 @@ global $twentyseventeencounter;
 			// Show recent projects if is a portfolio page
 			elseif ( $post->post_name === 'portfolio'  ) :
 				// TODO: use const 'jetpack_portfolio_posts_per_page' to retrieve number of posts from the theme's own settings
-				$num_posts = 6;
+				$num_posts = 12;
 				$num_columns = 3;
 				$current_index = 0;
 
@@ -86,9 +86,6 @@ global $twentyseventeencounter;
 				<div class="portfolio">
 					<?php
 					while ( $recent_projects->have_posts() ) :
-						if ( ( $current_index >= $num_columns ) && ( $current_index % $num_columns == 0 ) ) :
-							?> <br clear="all"/> <?php
-						endif;
 						$recent_projects->the_post();
 						get_template_part( 'template-parts/post/content', 'portfolio' );
 						++$current_index;
