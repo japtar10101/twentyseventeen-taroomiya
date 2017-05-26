@@ -15,11 +15,11 @@
 ?>
 
 <div class="portfolio-content">
-	<a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">
-		<div class="front"> 
-			<?php the_post_thumbnail('portfolio-thumbnail'); ?>
-		</div>
-		<div class="back">
+	<div class="front"> 
+		<?php the_post_thumbnail('portfolio-thumbnail'); ?>
+	</div>
+	<div class="back">
+		<a href="<?php echo esc_url( get_permalink() ); ?>" rel="bookmark">
 			<?php the_post_thumbnail('portfolio-thumbnail'); ?>
 			<div class="portfolio-info">
 				<h4><?php echo get_the_title(); ?></h4>
@@ -62,6 +62,6 @@
 					endif;
 				?>
 			</div>
-		</div>
-	</a>
+		</a>
+	</div>
 </div>
