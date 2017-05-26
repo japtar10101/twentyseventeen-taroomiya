@@ -21,10 +21,47 @@
 		</div>
 		<div class="back">
 			<?php the_post_thumbnail('portfolio-thumbnail'); ?>
-			<span>
+			<div class="portfolio-info">
 				<h4><?php echo get_the_title(); ?></h4>
-				<?php the_tags( '<p>', ', ', '</p>' ) ?>
-			</span>
+				<?php
+					$terms = get_the_terms( $post->ID, 'jetpack-portfolio-type' );
+					$add_comma = false;
+					if ( $terms ) :
+				?>
+				<p class="portfolio-types">
+					<?php
+						foreach ( $terms as $term ) :
+							if ( $add_comma ) :
+								echo ', ';
+							endif;
+							echo $term->name;
+							$add_comma = true;
+						endforeach;
+					?>
+				</p>
+				<?php
+					endif;
+				?>
+				<?php
+					$terms = get_the_terms( $post->ID, 'jetpack-portfolio-tag' );
+					$add_comma = false;
+					if ( $terms ) :
+				?>
+				<p class="portfolio-tags">
+					<?php
+						foreach ( $terms as $term ) :
+							if ( $add_comma ) :
+								echo ', ';
+							endif;
+							echo $term->name;
+							$add_comma = true;
+						endforeach;
+					?>
+				</p>
+				<?php
+					endif;
+				?>
+			</div>
 		</div>
 	</a>
 </div>
