@@ -23,11 +23,23 @@ get_header(); ?>
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
 
-			<?php // Show the selected frontpage content.
+			<?php
+			// Check if we have any blog posts
 			if ( have_posts() ) :
+			
+				// If so, go through each one
 				while ( have_posts() ) : the_post();
-					get_template_part( 'template-parts/post/content', 'excerpt' );
+				
+					// Post the full blog post
+					get_template_part( 'template-parts/post/content' );
+					
+					// If comments are open or we have at least one comment, load up the comment template.
+					if ( comments_open() || get_comments_number() ) :
+						comments_template();
+					endif;
 				endwhile;
+				
+				// Changing the posts
 				the_posts_pagination( array(
 					'prev_text' => twentyseventeen_get_svg( array( 'icon' => 'arrow-left' ) ) . '<span class="screen-reader-text">' . __( 'Previous page', 'twentyseventeen' ) . '</span>',
 					'next_text' => '<span class="screen-reader-text">' . __( 'Next page', 'twentyseventeen' ) . '</span>' . twentyseventeen_get_svg( array( 'icon' => 'arrow-right' ) ),
