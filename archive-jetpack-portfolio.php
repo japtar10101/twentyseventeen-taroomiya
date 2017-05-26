@@ -11,43 +11,50 @@
  */
 
 get_header(); ?>
-
+	
 <div class="wrap">
 
-	<?php if ( have_posts() ) : ?>
-		<header class="page-header">
-			<h1>Portfolio</h1>
-		</header><!-- .page-header -->
-	<?php endif; ?>
+	<header class="page-header">
+		<h1 class="page-title">All Projects</h1>
+	</header><!-- .page-header -->
 
 	<div id="primary" class="content-area">
 		<main id="main" class="site-main" role="main">
-
+			<p>Click once or tap twice on a thumbnail to see more information about that project.</p>
 		<?php
-		if ( have_posts() ) : ?>
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) : the_post();
+		$num_columns = 3;
+		$current_index = 0;
 
-				/*
-				 * Include the Post-Format-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Format name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/post/content', get_post_format() );
-
-			endwhile;
-
-			the_posts_pagination( array(
-				'prev_text' => twentyseventeen_get_svg( array( 'icon' => 'arrow-left' ) ) . '<span class="screen-reader-text">' . __( 'Previous page', 'twentyseventeen' ) . '</span>',
-				'next_text' => '<span class="screen-reader-text">' . __( 'Next page', 'twentyseventeen' ) . '</span>' . twentyseventeen_get_svg( array( 'icon' => 'arrow-right' ) ),
-				'before_page_number' => '<span class="meta-nav screen-reader-text">' . __( 'Page', 'twentyseventeen' ) . ' </span>',
-			) );
-
+		// Show all projects in a grid.
+		$all_projects = new WP_Query( array(
+			'posts_per_page'      => -1,
+			'post_type'           => 'jetpack-portfolio',
+			'post_status'         => 'publish',
+			'order'               => 'desc',
+			'orderby'             => 'date',
+		) );
+		if ( $all_projects->have_posts() ) : ?>
+			<div class="portfolio">
+				<?php
+				while ( $all_projects->have_posts() ) :
+					$all_projects->the_post();
+					get_template_part( 'template-parts/post/content', 'portfolio' );
+					++$current_index;
+				endwhile;
+				wp_reset_postdata();
+				?>
+			</div>
+			<script src="https://cdn.rawgit.com/nnattawat/flip/master/dist/jquery.flip.min.js"></script>
+			<script type="text/javascript">
+			(function($){
+			  $(".portfolio-content").flip({
+				trigger: "hover"
+			  });
+			})(jQuery);
+			</script>
+		<?php
 		else :
-
 			get_template_part( 'template-parts/post/content', 'none' );
-
 		endif; ?>
 
 		</main><!-- #main -->
