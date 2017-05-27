@@ -12,7 +12,7 @@
 
 get_header(); ?>
 	
-<div class="wrap">
+<div class="wrap" style="margin-bottom: 2em;">
 
 	<header class="page-header">
 		<h1 class="page-title">All Projects</h1>
